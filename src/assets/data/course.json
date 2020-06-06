@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "name": "HTML",
+      "description": "Create contents of pages"
+    
+    },
+    {
+        "id": 2,
+        "name": "CSS",
+        "description": "Add style to webpages"
+    },
+    {
+        "id": 3,
+        "name": "JS",
+        "description": "UI validation"
+    }
+  ]

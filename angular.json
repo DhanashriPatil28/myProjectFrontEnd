@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+        
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AUProject"
+    }
+  },
+  "defaultProject": "AUProject",
+  "cli": {
+    "analytics": "39c9e81d-0a19-4377-a607-6cf8acaa5bd5"
+  }
 }

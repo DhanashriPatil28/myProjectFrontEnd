@@ -1,0 +1,100 @@
+<br/>
+<h2>Course Management</h2>
+<br/>
+    
+    <button (click)="getAll()">Get Courses</button><br/><br/>
+    <button (click)="saveCourse()">Add Course</button><br/><br/>
+    <button (click)="deleteCourse()"> Delete Course </button><br/><br/>
+    <button (click)="updateCourse()">Update Course</button><br/><br/>
+
+    <br/><br/>
+    <div *ngIf="!isCollapsed1">
+        <h3>Available Courses:</h3>
+        <div *ngFor="let course of courses" >
+
+            Course ID: {{course.id}}
+            <br/>
+            Course Name: {{course.name}}
+            <br/>
+            Course Description: {{course.description}}
+            <br/><br/>
+        </div>
+    </div>
+    
+
+    <br/><br/>
+    <form #userForm= "ngForm" (ngSubmit) = "saveCourse()" novalidate *ngIf="!isCollapsed" action="saveCourse()"> 
+        <fieldset class="fieldset-auto-width">
+            <legend>Adding new course</legend><br/>
+        <br/>
+        <div class="form-group">
+            <label>id: </label>&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;
+            <input type="number" name="id" >
+        </div><br/>
+       
+        <div class="form-group">
+            <label>name: </label>&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="name" >
+        </div><br/>
+
+        <div class="form-group">
+            <label>description: </label>
+            <input type="text" name="description">
+        </div><br/>
+
+        <div class="form-group">
+            <button type="submit">save</button>
+        </div>
+        </fieldset>
+    </form>
+
+        <form #userForm= "ngForm" (ngSubmit) = "deleteCourse()" novalidate *ngIf="!isCollapsed2" action="deleteCourse()"> 
+            <fieldset class="fieldset-auto-width">
+                <legend>Deleting the course</legend><br/>
+            <br/>
+            <div class="form-group">
+                <label>id: </label>
+                <input type="number" name="id" >
+            </div><br/>
+            <div class="form-group">
+                <button type="submit">delete</button>
+            </div>
+    
+            </fieldset>
+        </form>
+    
+
+    <form #userForm= "ngForm" (ngSubmit) = "updateCourse()" novalidate *ngIf="!isCollapsed3" action="updateCourse()"> 
+        <fieldset class="fieldset-auto-width">
+            <legend>Updating the course</legend><br/>
+        <br/>
+        <div class="form-group">
+            <label>id: </label>&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;
+            
+            <input type="number" name="id" >
+        </div><br/>
+       
+        <div class="form-group">
+            <label>name: </label>&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="name" >
+        </div><br/>
+
+        <div class="form-group">
+            <label>description: </label>
+            <input type="text" name="description">
+        </div><br/>
+
+        <div class="form-group">
+            <button type="submit">update</button>
+        </div>
+        </fieldset>
+    </form>
+
+
+
