@@ -1,6 +1,6 @@
-export interface Course {
+export class Course {
 
     id: number;
-    name: string;
-    description: string;
+    name: string = "";
+    description: string = "";
 }

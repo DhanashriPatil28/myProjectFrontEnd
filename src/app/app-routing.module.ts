@@ -4,12 +4,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TrainingHomeComponent} from './training-home/training-home.component';
 import { CourseHomeComponent } from './course-home/course-home.component';
-import { AddCourseComponent } from './courseCRUD/add-course/add-course.component';
+import { Login1Component } from './login1/login1.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
-  {path: "course",component: CourseHomeComponent},
-  {path: "trainingMaterial", component: TrainingHomeComponent },
-  {path: "addCourse", component: AddCourseComponent },
+  {path: "",component: Login1Component,pathMatch: 'full'},
+  {path: "home",component: HeaderComponent,
+      children: [
+        {
+          path: 'course',
+          component: CourseHomeComponent,
+        },
+        {
+          path: 'trainingMaterial',
+          component: TrainingHomeComponent,
+        }
+      ]},
 ];
 
 @NgModule({

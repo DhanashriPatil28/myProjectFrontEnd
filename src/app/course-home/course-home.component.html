@@ -1,100 +1,97 @@
-<br/>
-<h2>Course Management</h2>
-<br/>
-    
-    <button (click)="getAll()">Get Courses</button><br/><br/>
-    <button (click)="saveCourse()">Add Course</button><br/><br/>
-    <button (click)="deleteCourse()"> Delete Course </button><br/><br/>
-    <button (click)="updateCourse()">Update Course</button><br/><br/>
+<body>
 
-    <br/><br/>
-    <div *ngIf="!isCollapsed1">
+
+   <br/>
+  <button class="logout"><a  href="http://localhost:4200/">Sign Out</a></button> 
+
+
+
+
+<h2>Course Management</h2>
+<div class='menu'>
+   <br/>
+   &nbsp;
+    <button (click)="getAll()">Get Courses</button>&nbsp;&nbsp;
+    <button (click)="toggle()">Add Course</button>&nbsp;&nbsp;
+    <button (click)="toggle2()"> Delete Course </button>&nbsp;&nbsp;
+    <button (click)="toggle3()">Update Course</button><br/><br/>
+    <br/>
+    <br/>
+</div>
+   
+    <div  *ngIf="!isCollapsed1">
         <h3>Available Courses:</h3>
         <div *ngFor="let course of courses" >
-
-            Course ID: {{course.id}}
+            <b>ID:</b>  {{course.id}}
             <br/>
-            Course Name: {{course.name}}
+            <b>Name:</b>  {{course.name}}
             <br/>
-            Course Description: {{course.description}}
+            <b>Description:</b>  {{course.description}}
             <br/><br/>
         </div>
     </div>
     
-
-    <br/><br/>
-    <form #userForm= "ngForm" (ngSubmit) = "saveCourse()" novalidate *ngIf="!isCollapsed" action="saveCourse()"> 
-        <fieldset class="fieldset-auto-width">
-            <legend>Adding new course</legend><br/>
-        <br/>
-        <div class="form-group">
-            <label>id: </label>&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;
-            <input type="number" name="id" >
-        </div><br/>
-       
-        <div class="form-group">
-            <label>name: </label>&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" name="name" >
-        </div><br/>
-
-        <div class="form-group">
-            <label>description: </label>
-            <input type="text" name="description">
-        </div><br/>
-
-        <div class="form-group">
-            <button type="submit">save</button>
-        </div>
-        </fieldset>
-    </form>
-
-        <form #userForm= "ngForm" (ngSubmit) = "deleteCourse()" novalidate *ngIf="!isCollapsed2" action="deleteCourse()"> 
+        <form  *ngIf="!isCollapsed" (ngSubmit)="saveCourse()">
+            <br/><br/>
             <fieldset class="fieldset-auto-width">
-                <legend>Deleting the course</legend><br/>
-            <br/>
-            <div class="form-group">
-                <label>id: </label>
-                <input type="number" name="id" >
-            </div><br/>
-            <div class="form-group">
-                <button type="submit">delete</button>
-            </div>
-    
+               <legend class= 'form1'>
+                  <b>You are adding the new course:</b> 
+               </legend><br/>
+               <div>
+                  <label class= 'form1'>Name: </label>
+                  <input [(ngModel)]="course.name" name="Name" required/>
+               </div><br/>
+               <div>
+                   <label class= 'form1'>Description: </label>
+                   <input [(ngModel)]="course.description" name="Description" required/>
+                </div><br/>
+               <div>
+                  <button type="submit">save</button>
+               </div>
             </fieldset>
-        </form>
-    
-
-    <form #userForm= "ngForm" (ngSubmit) = "updateCourse()" novalidate *ngIf="!isCollapsed3" action="updateCourse()"> 
+        </form> 
+ 
+    <form  *ngIf="!isCollapsed2" (ngSubmit)="deleteCourse()">
+        <br/><br/>
         <fieldset class="fieldset-auto-width">
-            <legend>Updating the course</legend><br/>
-        <br/>
-        <div class="form-group">
-            <label>id: </label>&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;
-            
-            <input type="number" name="id" >
-        </div><br/>
-       
-        <div class="form-group">
-            <label>name: </label>&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" name="name" >
-        </div><br/>
-
-        <div class="form-group">
-            <label>description: </label>
-            <input type="text" name="description">
-        </div><br/>
-
-        <div class="form-group">
-            <button type="submit">update</button>
-        </div>
+           <legend class= 'form1' ><b>You are deleting this course: </b></legend>
+          <br/>
+         <div>
+            <label class= 'form1'>Id: </label>
+            <input [(ngModel)]="course.id" name="id" required/>
+         </div><br/>
+         <div>
+            <button type="submit">delete</button>
+         </div>
         </fieldset>
-    </form>
+      </form> 
 
+      
 
+        <form  *ngIf="!isCollapsed3" (ngSubmit)="updateCourse()">
+            <br/><br/>
+            <fieldset class="fieldset-auto-width">
+               <legend class= 'form1'><b>You are updating this course:</b></legend>
+               <br/>
+               <div>
+                  <label class= 'form1'>Id: </label>
+                  <input [(ngModel)]="course.id" name="id" type="number" required/>
+               </div><br/>
+               <div>
+                  <label class= 'form1'>Name: </label>
+                  <input [(ngModel)]="course.name" name="name" required/>
+               </div><br/>
+               <div>
+                   <label class= 'form1'>Description: </label>
+                   <input [(ngModel)]="course.description" name="description" required/>
+                </div><br/>
+               <div>
+                  <button type="submit">update</button>
+               </div>
+            </fieldset>
+         </form> 
+         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+         <br/>
+
+</body>
 
