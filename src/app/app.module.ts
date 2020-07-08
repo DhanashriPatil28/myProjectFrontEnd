@@ -7,13 +7,22 @@ import { AppComponent } from './app.component';
 import { CourseHomeComponent } from './course-home/course-home.component';
 import { TrainingHomeComponent } from './training-home/training-home.component';
 import { HeaderComponent } from './header/header.component';
-import { CourseService } from './course.service';
+import { CategoryService } from './category.service';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider} from "angularx-social-login";
-import { Login1Component } from './login1/login1.component';
-import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { LoginComponent } from './login/login.component';
+
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { DisplayAllCoursesComponent } from './display-all-courses/display-all-courses.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { CoursesFromCategoryComponent } from './courses-from-category/courses-from-category.component';
+import { AddCourseComponent } from './add-course/add-course.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
+import { TrialComponent } from './trial/trial.component';
+
 
 
 let config = new AuthServiceConfig([
@@ -33,7 +42,15 @@ export function provideConfig() {
     CourseHomeComponent,
     TrainingHomeComponent,
     HeaderComponent,
-    Login1Component
+    LoginComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    DisplayAllCoursesComponent,
+    WelcomeComponent,
+    CoursesFromCategoryComponent,
+    AddCourseComponent,
+    UpdateCourseComponent,
+    TrialComponent
   ],
   imports: [
     BrowserModule,
@@ -41,15 +58,14 @@ export function provideConfig() {
     RouterModule,
     FormsModule,
     HttpClientModule,
-    SocialLoginModule,
-    HttpClientTestingModule
+    SocialLoginModule
   ],
   providers: [
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     },
-    CourseService],
+    CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

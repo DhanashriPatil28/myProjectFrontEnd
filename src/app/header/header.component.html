@@ -1,17 +1,39 @@
+<div class="topnav">
+   <br/>
 
+  <div class="row">
+    <div class="column1">
+      <img id="logo-main" src="assets/images/logo.jpg" width="50" height="50">
+    </div>
+  
+    <div class="column4">
+      <div class="topnav-right">
 
-<div class='header'>
-    <br/>
-    &nbsp;
-    <button>
-        <a href="/home/course"> Course </a>
-    </button>
-    &nbsp;
-    <button>
-        <a href="/home/trainingMaterial"> Training Material </a>
-    </button>
-    <br/>
-    <br/>
+        <a class="active" href="/home">Home</a>&nbsp;&nbsp;
+        <a href="http://localhost:4200/">Log Out</a>&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
 </div>
 
+<app-welcome></app-welcome>
+<br/>
+<button>
+  <a href="/home/get"> Courses </a>
+</button>
+&nbsp;
+<button>
+  <a href="/home/add"> Add Course </a>
+</button>
+&nbsp;
+<button>
+  <a href="/home/update"> Update Course </a>
+</button>
+&nbsp;
+<button>
+  <a href="/home/material"> Material </a>
+</button>
+<br/>
 <router-outlet></router-outlet>
+
+

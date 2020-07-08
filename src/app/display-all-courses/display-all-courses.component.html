@@ -1,0 +1,11 @@
+
+
+<div *ngIf="isCollapsed">
+    <h6> <i><b>All Available Courses</b> </i></h6>
+    <div style="Text-align:center;float:left;"  *ngFor="let course of courses ">
+       <br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="button" >{{course}}</button>
+        <br/>
+      </div>
+</div>

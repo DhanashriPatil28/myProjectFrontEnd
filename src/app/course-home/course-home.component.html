@@ -1,97 +1,68 @@
-<body>
 
+<h5 class="error"><b> {{errorMsg}} </b></h5>
+<h5 class="error"><b> {{errorMsg1}} </b></h5>
+<h5 class="error"><b> {{errorMsg2}} </b></h5>
+<h5 class="error"><b> {{errorMsg3}} </b></h5>
+<h5 class="error"><b> {{errorMsg4}} </b></h5>
 
-   <br/>
-  <button class="logout"><a  href="http://localhost:4200/">Sign Out</a></button> 
-
-
-
-
-<h2>Course Management</h2>
-<div class='menu'>
-   <br/>
-   &nbsp;
-    <button (click)="getAll()">Get Courses</button>&nbsp;&nbsp;
-    <button (click)="toggle()">Add Course</button>&nbsp;&nbsp;
-    <button (click)="toggle2()"> Delete Course </button>&nbsp;&nbsp;
-    <button (click)="toggle3()">Update Course</button><br/><br/>
-    <br/>
-    <br/>
-</div>
+<div *ngIf="!isCollapsed">
+  <h5><i><b>Available Categories</b> </i> </h5>  
+<div style="Text-align:center;float:left;" class="showCategoryTypes" *ngFor="let category of categories ">
    
-    <div  *ngIf="!isCollapsed1">
-        <h3>Available Courses:</h3>
-        <div *ngFor="let course of courses" >
-            <b>ID:</b>  {{course.id}}
-            <br/>
-            <b>Name:</b>  {{course.name}}
-            <br/>
-            <b>Description:</b>  {{course.description}}
-            <br/><br/>
-        </div>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+    <button class="button" (click)="getCourses(category)"> <b>{{category}}</b></button>
+  </div>
+</div>
+
+<div *ngIf="!isCollapsed7">
+  <br/><br/><br/><br/>
+  <h6> <i><b>All Available Courses</b> </i></h6>
+  <div style="Text-align:center;float:left;"  *ngFor="let course of courses ">
+     <br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="nav-item nav-link-edit" style="width: 300px; height: 50px;" (click)="getCourseDetails(course)">{{course}}</button>
+      <br/>
     </div>
-    
-        <form  *ngIf="!isCollapsed" (ngSubmit)="saveCourse()">
-            <br/><br/>
-            <fieldset class="fieldset-auto-width">
-               <legend class= 'form1'>
-                  <b>You are adding the new course:</b> 
-               </legend><br/>
-               <div>
-                  <label class= 'form1'>Name: </label>
-                  <input [(ngModel)]="course.name" name="Name" required/>
-               </div><br/>
-               <div>
-                   <label class= 'form1'>Description: </label>
-                   <input [(ngModel)]="course.description" name="Description" required/>
-                </div><br/>
-               <div>
-                  <button type="submit">save</button>
-               </div>
-            </fieldset>
-        </form> 
- 
-    <form  *ngIf="!isCollapsed2" (ngSubmit)="deleteCourse()">
-        <br/><br/>
-        <fieldset class="fieldset-auto-width">
-           <legend class= 'form1' ><b>You are deleting this course: </b></legend>
-          <br/>
-         <div>
-            <label class= 'form1'>Id: </label>
-            <input [(ngModel)]="course.id" name="id" required/>
-         </div><br/>
-         <div>
-            <button type="submit">delete</button>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+
+<div *ngIf="isCollapsed7">
+  <br/><br/><br/><br/>
+  <h6> <i><b>All Available Courses from this Category</b> </i></h6>
+  <div style="Text-align:center;float:left;"  *ngFor="let course of courses ">
+     <br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="nav-item nav-link-edit" style="width: 300px; height: 50px;" (click)="getCourseDetails(course)">{{course}}</button>
+      <br/>
+    </div>
+    <br/><br/><br/><br/><br/>
+</div>
+
+<div  *ngIf="isCollapsed2">
+  <div class="details">
+    <br/><br/>
+    <h3 class= 'form1' >Course Details:</h3>
+    <form class= 'form1' (ngSubmit)="deleteCourse()" *ngFor="let course1 of course">
+      <fieldset class="fieldset-auto-width">
+        <legend>
+          <b>Course Name:</b> <br/> {{course1.courseName}}
+          <br/><br/>
+          <b>Course Category:</b> <br/> {{course1.categoryName}}
+          <br/><br/>
+          <b>Course Requirements:</b> <br/> {{course1.courseRequirements}}
+          <br/><br/>
+          <b>Course Description:</b> <br/> {{course1.courseDescription}}
+          <br/><br/>
+          <b>Course Contents:</b><br/>  {{course1.courseContents}}
+          <br/><br/>
+
+          <div>
+            <button type="submit"><b>Remove Course</b> </button>
          </div>
-        </fieldset>
-      </form> 
 
-      
-
-        <form  *ngIf="!isCollapsed3" (ngSubmit)="updateCourse()">
-            <br/><br/>
-            <fieldset class="fieldset-auto-width">
-               <legend class= 'form1'><b>You are updating this course:</b></legend>
-               <br/>
-               <div>
-                  <label class= 'form1'>Id: </label>
-                  <input [(ngModel)]="course.id" name="id" type="number" required/>
-               </div><br/>
-               <div>
-                  <label class= 'form1'>Name: </label>
-                  <input [(ngModel)]="course.name" name="name" required/>
-               </div><br/>
-               <div>
-                   <label class= 'form1'>Description: </label>
-                   <input [(ngModel)]="course.description" name="description" required/>
-                </div><br/>
-               <div>
-                  <button type="submit">update</button>
-               </div>
-            </fieldset>
-         </form> 
-         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-         <br/>
-
-</body>
-
+        </legend>
+      </fieldset> 
+    </form>
+  </div>
+</div>

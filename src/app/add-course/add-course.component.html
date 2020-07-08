@@ -1,0 +1,53 @@
+<h5 class="error"><b> {{errorMsg1}} </b></h5>
+
+<form  #userForm="ngForm" (ngSubmit)="saveCourse()" (ngSubmit)="validateCourse(course.courseName)">
+    <br/><br/>
+    <fieldset class="fieldset-auto-width">
+       <legend class= 'form1'>
+          <b>You are adding the new course:</b> 
+       </legend><br/>
+       <div>
+          <label class= 'form1'>Category Name: </label>
+         
+          <div class="column2">
+            <select (change)="getCourses(selectedCategory)" #catRef="ngModel" [(ngModel)]="course.categoryName" [(ngModel)]="selectedCategory" name="name" class="form-control" required> 
+               <option  *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+            </select>
+         </div>
+
+          <div [hidden]="catRef.valid || catRef.untouched" class="alert alert-danger">
+            Please slect the Category Name
+         </div>
+          
+          
+       </div><br/>
+       <div>
+           <label class= 'form1'>Course Name: </label>
+           <input (input)="  validateCourse(course.courseName) " class= 'form1' #courseRef="ngModel" [(ngModel)]="course.courseName" name="Course" required/>
+           <div [hidden]="courseRef.valid || courseRef.untouched" class="alert alert-danger">
+            Please enter the Course Name
+         </div>
+        </div><br/>
+        <div>
+            <label class= 'form1'>Course Requirements: </label>
+            <input class= 'form1' #reqRef="ngModel" [(ngModel)]="course.courseRequirements" name="Requirements" required/>
+            <div [hidden]="reqRef.valid || reqRef.untouched" class="alert alert-danger">
+               Please enter the Course Requirements
+            </div>
+         </div><br/>
+         <div>
+            <label class= 'form1'>Course Description: </label>
+            <input class= 'form1' [(ngModel)]="course.courseDescription" name="Description" />
+         </div><br/>
+         <div>
+            <label class= 'form1'>Course Contents: </label>
+            <input class= 'form1' #contentRef="ngModel" [(ngModel)]="course.courseContents" name="Contents" required/>
+            <div [hidden]="contentRef.valid || contentRef.untouched" class="alert alert-danger">
+               Please enter the Course Contents
+            </div>
+         </div><br/>
+       <div>
+          <button [disabled]="!userForm.form.valid" class="btn btn-primary" type="submit">save</button>
+       </div>
+    </fieldset>
+</form> 
